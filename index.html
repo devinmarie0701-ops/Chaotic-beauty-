@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaotic Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#1a120d;
+      --text:#efe3d4;
+      --muted:#dacabc;
+      --soft:#b8a394;
+      --line:rgba(239,227,212,.42);
+      --max:1150px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(16,10,8,.15), rgba(16,10,8,.15)),
+        url('background.jpg') center top / cover fixed no-repeat;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .page{
+      width:min(var(--max), calc(100% - 44px));
+      margin:0 auto;
+      padding:44px 0 30px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      align-items:start;
+      gap:62px;
+      margin-bottom:88px;
+    }
+
+    .hero-copy{
+      padding-top:8px;
+      text-align:center;
+    }
+
+    .hero-title{
+      font-family:'Playfair Display',serif;
+      font-weight:500;
+      font-size:clamp(3.45rem, 8vw, 5.2rem);
+      line-height:.94;
+      letter-spacing:.015em;
+      text-transform:uppercase;
+      margin-bottom:30px;
+    }
+
+    .hero-copy p{
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1rem;
+    }
+
+    .hero-copy p + p{
+      margin-top:4px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      min-width:155px;
+      padding:11px 18px;
+      border:1.35px solid var(--line);
+      border-radius:8px;
+      color:var(--text);
+      text-decoration:none;
+      font-size:.92rem;
+      font-weight:400;
+      transition:.25s ease;
+      background:rgba(255,255,255,.01);
+    }
+
+    .btn:hover{
+      background:rgba(239,227,212,.08);
+    }
+
+    .hero-image{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+
+    .statement{
+      text-align:center;
+      margin:0 auto 78px;
+      max-width:900px;
+    }
+
+    .statement h2{
+      font-family:'Playfair Display',serif;
+      font-weight:500;
+      font-size:clamp(2.6rem, 4.9vw, 4.15rem);
+      line-height:1.18;
+      margin-bottom:22px;
+    }
+
+    .statement em{
+      font-style:italic;
+      font-weight:400;
+    }
+
+    .statement p{
+      max-width:650px;
+      margin:0 auto;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.04rem;
+    }
+
+    .recent{
+      text-align:center;
+      margin-bottom:32px;
+    }
+
+    .recent h3{
+      font-family:'Playfair Display',serif;
+      font-weight:500;
+      font-size:clamp(2.05rem, 3vw, 2.8rem);
+      margin-bottom:28px;
+    }
+
+    .work-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-bottom:78px;
+    }
+
+    .work-grid img{
+      width:100%;
+      display:block;
+      height:auto;
+      border-radius:0;
+    }
+
+    .artists{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:46px;
+      margin-bottom:72px;
+      align-items:start;
+    }
+
+    .artist{
+      display:grid;
+      grid-template-columns: 1fr 270px;
+      gap:24px;
+      align-items:start;
+    }
+
+    .artist-info{
+      padding-top:26px;
+    }
+
+    .artist-name{
+      font-family:'Playfair Display',serif;
+      font-weight:500;
+      font-size:clamp(2.35rem, 4vw, 3.4rem);
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .artist-specialty{
+      color:var(--muted);
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    .artist-rule{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:24px;
+    }
+
+    .artist-rule::before{
+      content:"";
+      width:14px;
+      height:14px;
+      border:1.4px solid var(--line);
+      border-radius:50%;
+      display:block;
+    }
+
+    .artist-rule::after{
+      content:"";
+      width:84px;
+      height:1.4px;
+      background:var(--line);
+      display:block;
+    }
+
+    .artist-bio{
+      color:var(--muted);
+      line-height:1.72;
+      font-size:1rem;
+      max-width:250px;
+    }
+
+    .artist img{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+
+    .cta{
+      text-align:center;
+      padding-bottom:10px;
+    }
+
+    .cta h2{
+      font-family:'Playfair Display',serif;
+      font-weight:500;
+      font-size:clamp(2rem, 3vw, 3rem);
+      margin-bottom:22px;
+    }
+
+    .cta .btn{
+      min-width:190px;
+      font-size:1rem;
+    }
+
+    .note{
+      width:min(var(--max), calc(100% - 44px));
+      margin:28px auto 42px;
+      color:rgba(255,255,255,.60);
+      border:1px dashed rgba(255,255,255,.14);
+      padding:16px 18px;
+      font-size:.88rem;
+      line-height:1.7;
+      background:rgba(0,0,0,.12);
+    }
+
+    @media (max-width: 980px){
+      .hero{
+        grid-template-columns:1fr;
+        gap:30px;
+        margin-bottom:58px;
+      }
+      .hero-copy{
+        order:1;
+      }
+      .hero-image-wrap{
+        order:0;
+      }
+      .statement{
+        margin-bottom:58px;
+      }
+      .work-grid{
+        grid-template-columns:repeat(2,1fr);
+        margin-bottom:58px;
+      }
+      .artists{
+        grid-template-columns:1fr;
+        gap:34px;
+        margin-bottom:58px;
+      }
+      .artist{
+        grid-template-columns:1fr 230px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .page{
+        width:min(calc(100% - 24px), var(--max));
+        padding-top:24px;
+      }
+      .hero-title{
+        font-size:3.25rem;
+      }
+      .statement h2{
+        font-size:2.4rem;
+      }
+      .artist{
+        grid-template-columns:1fr;
+      }
+      .artist img{
+        max-width:290px;
+      }
+      .artist-info{
+        padding-top:6px;
+      }
+      .work-grid{
+        grid-template-columns:1fr;
+      }
+      .btn{
+        min-width:140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <!-- EDIT TITLE / SUBTEXT HERE -->
+        <h1 class="hero-title">Chaotic<br>Beauty</h1>
+        <p>Two artists. One vision.</p>
+        <p>Where beauty and chaos meet with intention.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#book">Book with Dev</a>
+          <a class="btn" href="#book">Book with Jackie</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <!-- REPLACE hero.jpg LATER -->
+        <img class="hero-image" src="hero.jpg" alt="Dev and Jackie hero">
+      </div>
+    </section>
+
+    <section class="statement">
+      <!-- EDIT BRAND STATEMENT HERE -->
+      <h2>We’re not just a salon suite.<br>We’re a <em>hair community.</em></h2>
+      <p>Chaotic Beauty is built on collaboration, trust, and elevated artistry. No ego. Just intention.</p>
+    </section>
+
+    <section class="recent" id="work">
+      <h3>Recent Work</h3>
+      <div class="work-grid">
+        <!-- REPLACE THESE FIVE IMAGES LATER -->
+        <img src="work-1.jpg" alt="Recent work 1">
+        <img src="work-2.jpg" alt="Recent work 2">
+        <img src="work-3.jpg" alt="Recent work 3">
+        <img src="work-4.jpg" alt="Recent work 4">
+        <img src="work-5.jpg" alt="Recent work 5">
+      </div>
+    </section>
+
+    <section class="artists" id="artists">
+      <article class="artist">
+        <div class="artist-info">
+          <!-- EDIT DEV TEXT HERE -->
+          <h3 class="artist-name">Dev</h3>
+          <div class="artist-specialty">Blonde &amp; Vivids</div>
+          <div class="artist-rule"></div>
+          <p class="artist-bio">Dev Creates bold, lived-in styles meant for those who crave vivid expression and intentional edge.</p>
+        </div>
+        <!-- REPLACE dev.jpg LATER -->
+        <img src="dev.jpg" alt="Dev portrait">
+      </article>
+
+      <article class="artist">
+        <div class="artist-info">
+          <!-- EDIT JACKIE TEXT HERE -->
+          <h3 class="artist-name">Jackie</h3>
+          <div class="artist-specialty">Dimensional Brunettes</div>
+          <div class="artist-rule"></div>
+          <p class="artist-bio">Jackie specializes in rich, multi-dimensional brunettes with a passion for deep, natural and lasting beauty.</p>
+        </div>
+        <!-- REPLACE jackie.jpg LATER -->
+        <img src="jackie.jpg" alt="Jackie portrait">
+      </article>
+    </section>
+
+    <section class="cta" id="book">
+      <h2>Ready to experience intentional chaos?</h2>
+      <a class="btn" href="#">Book Now</a>
+    </section>
+  </main>
+
+  <div class="note">
+    <strong>How to edit later:</strong> replace <code>hero.jpg</code>, <code>work-1.jpg</code> through <code>work-5.jpg</code>, <code>dev.jpg</code>, and <code>jackie.jpg</code> with your own photos using the same file names. The layout stays intact. Edit any text directly inside <code>index.html</code>.
+  </div>
+</body>
+</html>
